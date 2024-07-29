@@ -106,3 +106,127 @@
 //     });
 //   });
 // });
+
+//************************************Mocking function or jest.fn()************************************************ */
+//In Jest, jest.fn() is a utility function used to create mock functions. Mock functions (or spies) are essential in unit testing because they allow you to monitor and control the behavior of functions, track how they are called, and verify that they are used as expected.
+
+//Here’s a detailed explanation of jest.fn() and its common use cases:
+
+           //1.Creating a Mock Function
+
+// code:-
+//const mockFunction = jest.fn();
+//Purpose: Creates a new, unused mock function.
+//Behavior: By default, a mock function does nothing and returns undefined.
+
+
+            //2. Tracking Calls and Arguments
+//Mock functions provide utilities to track how they are called, including:
+//Number of Calls: mockFunction.mock.calls.length
+//Arguments for Each Call: mockFunction.mock.calls
+//Return Values: mockFunction.mock.results
+// code:-
+// const mockFunction = jest.fn();
+// mockFunction('arg1', 'arg2');
+// mockFunction('arg3');
+// console.log(mockFunction.mock.calls);
+// // Outputs: [ ['arg1', 'arg2'], ['arg3'] ]
+// Explanation:
+// mock.calls contains an array of arrays, each representing the arguments used in each call to the mock function.
+
+
+            //3.Setting Return Values
+// You can configure a mock function to return specific values using mockReturnValue() or mockReturnValueOnce().
+// code:-
+// const mockFunction = jest.fn().mockReturnValue('default value');
+// console.log(mockFunction()); // Outputs: 'default value'
+// // Setting a different return value for the first call
+// mockFunction.mockReturnValueOnce('first call');
+// console.log(mockFunction()); // Outputs: 'first call'
+// console.log(mockFunction()); // Outputs: 'default value'
+// Explanation:
+// mockReturnValue() sets a default return value for all calls.
+// mockReturnValueOnce() sets a return value for only the next call.
+
+
+                       //4.Setting Implementation
+// You can provide a custom implementation for the mock function using mockImplementation().
+//  code:-
+// const mockFunction = jest.fn((a, b) => a + b);
+// console.log(mockFunction(2, 3)); // Outputs: 5
+// Explanation:
+// mockImplementation() allows you to define a custom implementation for the mock function.
+
+
+                          //5.Resetting Mock Function
+// Sometimes you might want to clear the state of a mock function between tests using mockReset() or mockClear().
+// code:-
+// const mockFunction = jest.fn();
+// mockFunction('test');
+// console.log(mockFunction.mock.calls.length); // Outputs: 1
+// mockFunction.mockReset(); // Clears all calls and implementations
+// console.log(mockFunction.mock.calls.length); // Outputs: 0
+// Explanation:
+// mockReset() clears all mock calls, return values, and implementations.
+// mockClear() only clears call history, preserving return values and implementations.
+
+
+                         //6.Verifying Behavior
+//Jest provides matchers for asserting how a mock function was used:
+// code:-
+// const mockFunction = jest.fn();
+// mockFunction('arg1', 'arg2');
+// expect(mockFunction).toHaveBeenCalled(); // Asserts that the function was called
+// expect(mockFunction).toHaveBeenCalledWith('arg1', 'arg2'); // Asserts the function was called with specific arguments
+// expect(mockFunction).toHaveBeenCalledTimes(1); // Asserts the function was called exactly once
+// Explanation:
+// toHaveBeenCalled(): Checks if the function was called at least once.
+// toHaveBeenCalledWith(): Checks if the function was called with specific arguments.
+// toHaveBeenCalledTimes(): Checks the exact number of times the function was called.
+
+
+                      //7.Examples in Context
+// Testing a Function that Uses a Callback
+// code:-
+// // myModule.js
+// function processData(callback) {
+//   callback('data');
+// }
+// module.exports = processData;
+// // myModule.test.js
+// const processData = require('./myModule');
+
+// test('calls callback with data', () => {
+//   const mockCallback = jest.fn();
+
+//   processData(mockCallback);
+
+//   expect(mockCallback).toHaveBeenCalledWith('data');
+// });
+// Explanation:
+// jest.fn() is used to create a mock callback function.
+// The test verifies that the processData function calls the mock callback with the expected argument.
+
+                     //8.Testing Asynchronous Code 
+// code:-
+// // asyncModule.js
+// function fetchData(callback) {
+//   setTimeout(() => {
+//     callback('data');
+//   }, 1000);
+// }
+
+// module.exports = fetchData;
+
+// // asyncModule.test.js
+// const fetchData = require('./asyncModule');
+// test('calls callback with data after async operation', done => {
+//   const mockCallback = jest.fn();
+//   fetchData(mockCallback);
+//   setTimeout(() => {
+//     expect(mockCallback).toHaveBeenCalledWith('data');
+//     done(); // Indicates test completion
+//   }, 1500); // Ensure timeout is longer than async delay
+// });
+
+ 
