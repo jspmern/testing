@@ -1,5 +1,7 @@
-import { isPostiveArray, mergeArray, sumOfArray } from "./array";
+//toStrictEqual or toEqual is a matcher function for match object and array
+//for more details about the matcher function follow this link -   https://jestjs.io/docs/using-matchers
 
+import { isPostiveArray, mergeArray, sumOfArray } from "./array";
 //this is for the merge two array
 it("for merge two array", () => {
   let arr = [1, 2, 3, 4];
