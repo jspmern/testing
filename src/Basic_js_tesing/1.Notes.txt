@@ -229,4 +229,24 @@
 //   }, 1500); // Ensure timeout is longer than async delay
 // });
 
+
+
+//*********************************resolves and rejects****************************************
+ //.resolves 
+-You can also use the .resolves matcher in your expect statement, and Jest will wait for that promise to resolve. If the promise is rejected, the test will automatically fail.
+
+example:-
+test('the data is peanut butter', () => {
+  return expect(fetchData()).resolves.toBe('peanut butter');
+});
+
+Note Point-
+Be sure to return the assertion—if you omit this return statement, your test will complete before the promise returned from fetchData is resolved and then() has a chance to execute the callback.
+
+/// .rejects
+If you expect a promise to be rejected, use the .rejects matcher. It works analogically to the .resolves matcher. If the promise is fulfilled, the test will automatically fail.
+ example:-
+test('the fetch fails with an error', () => {
+  return expect(fetchData()).rejects.toMatch('error');
+});
  
