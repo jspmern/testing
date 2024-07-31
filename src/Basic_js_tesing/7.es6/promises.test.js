@@ -6,7 +6,7 @@ import {
 
 //By using then and catch
 test("promiseHandler testing", (done) => {
-  promiseHandler("utsavx")
+  promiseHandler("utsav")
     .then((item) => {
       expect(item).toBe("utsav");
       done();

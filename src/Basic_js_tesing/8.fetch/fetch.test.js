@@ -2,22 +2,29 @@ import mockdata from "./mockdata.json";
 import { fetchData } from "./fetch";
 // global.fetch = jest.fn(() => {
 //   return Promise.resolve({
-//     ok: true,
 //     json: () => {
 //       return Promise.resolve(mockdata);
 //     },
 //   });
 // });
 
+// test("testing for the fetch", async () => {
+//   let data = await fetchData();
+//   let result = await data.json();
+//   expect(result).toEqual(mockdata);
+// });
 //with  mockresolvevalueonce and makeresolvereject once
 describe("fetchData", () => {
-  beforeEach(() => {
-    global.fetch = jest.fn();
-  });
+  global.fetch = jest.fn();
 
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
+  //**********else you can define like that also*********
+  // beforeEach(() => {
+  //   global.fetch = jest.fn();
+  // });
+
+  // afterEach(() => {
+  //   jest.resetAllMocks();
+  // });
 
   test("should fetch data successfully", async () => {
     global.fetch.mockResolvedValueOnce({
@@ -47,7 +54,6 @@ describe("fetchData", () => {
 
   test("should throw an error when fetch fails", async () => {
     global.fetch.mockRejectedValueOnce(new Error("Fetch failed"));
-
     await expect(fetchData()).rejects.toThrow("Fetch failed");
     expect(global.fetch).toHaveBeenCalledTimes(1);
     expect(global.fetch).toHaveBeenCalledWith(

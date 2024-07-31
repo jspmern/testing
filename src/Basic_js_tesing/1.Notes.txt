@@ -1,10 +1,10 @@
 
-  //*************why react developer have to do testing************************* 
-// Testing React components is crucial for several reasons:
+********************************why react developer have to do testing*************************** 
+Testing React components is crucial for several reasons:
             // 1. Ensures Component Functionality
 // Validation: Testing ensures that components behave as expected and produce the correct output given certain inputs or states.
 // Bug Detection: It helps catch bugs early in the development process by verifying that the component works correctly under various scenarios.
-           // 2. Improves Code Quality
+            // 2. Improves Code Quality
 // Design Improvement: Writing tests often leads to better component design. It encourages developers to create smaller, more manageable, and more modular components.
 // Documentation: Tests serve as a form of documentation, describing how components should behave and how they are expected to be used.
          // 3. Enhances Collaboration
@@ -18,17 +18,17 @@
 // Error Handling: Tests can verify that error handling is properly implemented, ensuring that users are presented with appropriate feedback in case of issues.
 
 
-//*************** Type of testing ***********************
+*********************************** Type of testing ***********************
 //1.unit testing= testing individual units of Component
 //2.Integrated-testing= testing between two units or component
 //3.E-2-E Testing= test Start to end complete Project(usually this thing is done by tester not developer)
 
-//******************Requirement************************** *//
+******************************Requirement**************************************
  //1.jest 
  //2.React Testing Library
   //note - if you are using  CRA(create react app (npx create-react-app demo)) their is no need to use any third party library everything you will get but if you are using vite ,parcels than you have to install manually for better understanding follow offical document
 
-//*********************how to execute*********************** *//
+*****************************how to execute***************************
 //go and check package.json (if you are following cra)
 //command: npm run test 
 //after press a
@@ -39,10 +39,10 @@
                                         //Time:        3.27 s
 
 
-//***********write first js test case******************** *// 
+*****************write first js test case************************** 
 // follow -2.function (folder)
 
-//***************** understand matcher fuction or method******************* *//
+************************ understand matcher fuction or method************************
 //follow this link -   https://jestjs.io/docs/using-matchers
                                        
 
@@ -107,7 +107,7 @@
 //   });
 // });
 
-//************************************Mocking function or jest.fn()************************************************ */
+//************************************Mocking function or jest.fn()******************************************/
 //In Jest, jest.fn() is a utility function used to create mock functions. Mock functions (or spies) are essential in unit testing because they allow you to monitor and control the behavior of functions, track how they are called, and verify that they are used as expected.
 
 //Here’s a detailed explanation of jest.fn() and its common use cases:
@@ -121,10 +121,14 @@
 
 
             //2. Tracking Calls and Arguments
-//Mock functions provide utilities to track how they are called, including:
+//Mock functions provide utilities to track how they are called, including:-
+
 //Number of Calls: mockFunction.mock.calls.length
+
 //Arguments for Each Call: mockFunction.mock.calls
+
 //Return Values: mockFunction.mock.results
+
 // code:-
 // const mockFunction = jest.fn();
 // mockFunction('arg1', 'arg2');
