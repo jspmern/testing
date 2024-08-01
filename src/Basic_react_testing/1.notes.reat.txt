@@ -1,0 +1,79 @@
+*****************************step for testing component *********************
+step1- you have to render component that you have to test 
+step2- select element by using selecting and targeting method
+step3- assertion 
+
+examples :------
+import { render, screen } from "@testing-library/react";
+ test("test for heading tag", () => {
+  render(<ReactElement />);
+  let heading = screen.getByText("Hello , I Am Heading");
+  expect(heading).toBeInTheDocument();
+});
+important point is you have to import screen and render from  @testing-library/react  library  screen method means whatever thing that is visible in screen everything you can access  ,render method method means render the component
+ 
+ *********************select or target******************************************
+
+ //single react element by using following method:-
+
+1.getByText :-function to find elements in your rendered component by their text content.
+
+2.getByTitle :- query is used to select an element by its title attribute. 
+
+3.getByRole:- Selects elements by their ARIA role, which is useful for accessibility testing.
+
+4.getByLabelText:-Selects form elements by their associated label text. Useful for testing accessibility labels.
+
+5.getByPlaceholderText:- Selects input elements by their placeholder attribute.
+
+6.getByDisplayValue:-  Selects input elements by their current value. Useful for form elements.
+
+7.getByAltText  :-  Selects image elements by their alt attribute, important for accessibility.
+
+8.getByTestId:-Selects elements by a data-testid attribute. This is useful for targeting elements in tests without relying on visible text or attributes that might change.
+
+//multiple react element:-
+
+1. By Role (getAllByRole)
+This method selects all elements with a specific ARIA role. It’s useful for testing accessibility as it aligns with how screen readers interact with elements
+
+2. By Text (getAllByText)
+This method selects all elements containing the specified text. It’s particularly useful when the elements have similar content.
+
+3. By Label Text (getAllByLabelText)
+Used for form elements associated with a label, this method is useful for selecting multiple inputs or other interactive elements by their label text.
+
+4. By Placeholder Text (getAllByPlaceholderText)
+This method selects all input elements by their placeholder attribute.
+
+5. By Alt Text (getAllByAltText)
+Selects all image elements by their alt attribute, which is essential for accessible image descriptions.
+
+6. By Title (getAllByTitle)
+This method selects all elements by their title attribute, often used for tooltips.
+
+7. By Test ID (getAllByTestId)
+Using data-testid attributes, this method is useful when other queries aren’t sufficient, especially for non-visible content.
+
+8. Using querySelectorAll
+You can use querySelectorAll from the container object to directly query the DOM using CSS selectors.
+
+example:-  
+test('finds all table rows using querySelectorAll', () => {
+  const { container } = render(<TableComponent />);
+  const rows = container.querySelectorAll('tbody tr');
+  expect(rows.length).toBe(2);
+
+
+
+
+
+//important assertion method
+.toHaveAttribute()  :- matcher is a utility provided by the Jest DOM extension (@testing-library/jest-dom) that allows you to assert whether an element has a specific attribute with a particular value. This is useful when you need to check if an HTML element has certain attributes set correctly, such as src, href, alt, title, and more.
+syntax:-
+expect(element).toHaveAttribute(attributeName, attributeValue)
+here:-
+element: The DOM element you want to test.
+attributeName: The name of the attribute you are checking for.
+attributeValue (optional): The expected value of the attribute. If this is omitted, the assertion will simply check that the attribute exists on the element.
+ 

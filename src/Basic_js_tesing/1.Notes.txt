@@ -38,6 +38,13 @@ Testing React components is crucial for several reasons:
                                         //Snapshots:   0 total
                                         //Time:        3.27 s
 
+more detpth idea about executing command
+  Press a to run all tests.
+ › Press f to run only failed tests.
+ › Press q to quit watch mode.
+ › Press p to filter by a filename regex pattern. 
+ › Press t to filter by a test name regex pattern.
+ › Press Enter to trigger a test run.
 
 *****************write first js test case************************** 
 // follow -2.function (folder)
